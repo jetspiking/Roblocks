@@ -20,30 +20,30 @@ _The application has been verified to run on Apple Silicon (```M1```)._
 
 #### Add / Remove Node(s)
 Select the Visual Edit window (center) and click the "add (+)" icon.
-![Application](https://github.com/jetspiking/Roblocks/blob/main/Images/Application.png | width=80)
+![](https://github.com/jetspiking/Roblocks/blob/main/Images/Application.png | width=80)
 
 #### Add / Remove Operation(s)
 Select a node (click) and click the "add (+)" icon.
-![Application](https://github.com/jetspiking/Roblocks/blob/main/Images/General.png =80x80)
+![](https://github.com/jetspiking/Roblocks/blob/main/Images/General.png)
 
 #### Configure Operation(s)
 Click on an operation inside a node and click the "settings" icon.
-![Application](https://github.com/jetspiking/Roblocks/blob/main/Images/Attributes.png)
+![](https://github.com/jetspiking/Roblocks/blob/main/Images/Attributes.png)
 
 #### Compile to .json file
 Click on "File" --> "Save Project" to save your project to the selected location on your disk.  
 
 #### Change read / write location
 Click on "App (RB)" --> "Preferences" to adjust the paths for reading and writing. 
-![Application](https://github.com/jetspiking/Roblocks/blob/main/Images/Preferences.png)
+![](https://github.com/jetspiking/Roblocks/blob/main/Images/Preferences.png)
 
 #### Hiding / Showing views
 Click on "View" and select the windows you would like to see.
-![Application](https://github.com/jetspiking/Roblocks/blob/main/Images/Views.png)
+![](https://github.com/jetspiking/Roblocks/blob/main/Images/Views.png)
 
 #### Log
 A more detailed log can be viewed by navigating to "View" and click on "Expand log".
-![Application](https://github.com/jetspiking/Roblocks/blob/main/Images/Log.png)
+![](https://github.com/jetspiking/Roblocks/blob/main/Images/Log.png)
 
 # Configuration (Roblocks Protocol)
 
