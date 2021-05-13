@@ -26,17 +26,17 @@ _The application has been verified to run on Apple Silicon (```M1```)._
 
 # Usage
 
-## Add / Remove Node(s)
+#### Add / Remove Node(s)
 
-## Add / Remove Operation(s)
+#### Add / Remove Operation(s)
 
-## Configure Operation(s)
+#### Configure Operation(s)
 
-## Compile to .json file
+#### Compile to .json file
 
-## Change read / write location
+#### Change read / write location
 
-## Hiding / Showing views
+#### Hiding / Showing views
 
 # Configuration (Roblocks Protocol)
 
