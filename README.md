@@ -24,7 +24,21 @@ Launch the executable to startup Roblocks, it should work out of the box.
 
 _The application has been verified to run on Apple Silicon (```M1```)._
 
-# Configuration
+# Usage
+
+## Add / Remove Node(s)
+
+## Add / Remove Operation(s)
+
+## Configure Operation(s)
+
+## Compile to .json file
+
+## Change read / write location
+
+## Hiding / Showing views
+
+# Configuration (Roblocks Protocol)
 
 
 # Building
