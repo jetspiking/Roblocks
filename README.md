@@ -18,3 +18,6 @@ Roblocks is an accessible Graphical Programming Tool which enables basic robot p
 
 
 # Configuration
+
+# Building
+The application has been built using IntelliJ Community Edition and uses the libraries Gson-2.8.6.jar and json-simple-1.1.1.jar. Make sure to include these as libraries using your prefered methods. 
