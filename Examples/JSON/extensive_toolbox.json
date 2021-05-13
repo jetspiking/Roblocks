@@ -1,0 +1,84 @@
+{
+	"components":
+	[
+		{
+			"name": "Movement",
+			"image": "move.png",
+			"attributes": ["move_forward", "move_backward", "move_left", "move_right", "rotate_left", "rotate_right", "look_up", "look_down"],
+			"description": "Move your robot",
+			"tags": ["Movement", "Moving", "Position", "Motion", "Action", "Gesture", "Manoeuvre"]
+		},
+
+		{
+			"name": "Audio",
+			"image": "volume-2.png",
+			"attributes": ["filename", "volume", "url"],
+			"description":"Play audio on robot",
+			"tags":["Audio", "Music", "MP3"]
+		},
+
+		{
+			"name":"Camera",
+			"image":"eye.png",
+			"attributes":["view_cam"],
+			"description":"Spy on your robot",
+			"tags":["Monitoring","Camera","Cam"]
+		},
+
+		{
+			"name":"Logging",
+			"image":"activity.png",
+			"attributes":["Log_debug","Log_verbose","Log_critics","Log_panic"],
+			"description":"Activate activity logging",
+			"tags":["Logging, Monitoring"]
+		},
+
+		{
+			"name":"Commands",
+			"image":"command.png",
+			"attributes":["Command_1", "Command_2"],
+			"description":"Execute commands",
+			"tags":["Action", "Perform", "Command"]
+		},
+
+		{
+			"name":"AI",
+			"image":"cpu.png",
+			"attributes":["Walk_until_obj"],
+			"description":"AI",
+			"tags":["AI", "ML", "Smart"]
+		},
+
+		{
+			"name":"Mode",
+			"image":"sliders.png",
+			"attributes":["Crouch", "Walk", "Run"],
+			"description":"Change the operation mode",
+			"tags":["Overclocking", "Turbo", "Tweaking"]
+		},
+
+		{
+			"name":"Dance",
+			"image":"headphones.png",
+			"attributes":["Radio_gaga", "Keep_me_hanging_on"],
+			"description":"Let your robot dance",
+			"tags":["Fun", "Dance"]
+		},
+
+		{
+			"name":"Record",
+			"image":"video.png",
+			"attributes":["Start_record", "Stop_record"],
+			"description":"Start robot recording",
+			"tags":["Record, Spy"]
+		},
+
+		{
+			"name":"Settings",
+			"image":"settings.png",
+			"attributes":["Perform_sys_check"],
+			"description":"Robot settings",
+			"tags":["Settings"]
+		}
+	]
+}

@@ -1,0 +1,20 @@
+{
+	"components":
+	[
+		{
+			"name": "Movement",
+			"image": "move.png",
+			"attributes": ["move_forward", "move_backward", "move_left", "move_right", "rotate_left", "rotate_right", "look_up", "look_down"],
+			"description": "Move your robot",
+			"tags": ["Movement", "Moving", "Position", "Motion", "Action", "Gesture", "Manoeuvre"]
+		},
+
+		{
+			"name":"Settings",
+			"image":"settings.png",
+			"attributes":["Perform_sys_check"],
+			"description":"Robot settings",
+			"tags":["Settings"]
+		}
+	]
+}
