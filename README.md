@@ -20,7 +20,7 @@ _The application has been verified to run on Apple Silicon (```M1```)._
 
 #### Add / Remove Node(s)
 Select the Visual Edit window (center) and click the "add (+)" icon.
-![](https://github.com/jetspiking/Roblocks/blob/main/Images/Application.png|width=80)
+![](https://github.com/jetspiking/Roblocks/blob/main/Images/Application.png)
 
 #### Add / Remove Operation(s)
 Select a node (click) and click the "add (+)" icon.
