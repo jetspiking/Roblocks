@@ -24,7 +24,7 @@ Select the Visual Edit window (center) and click the "add (+)" icon.
 
 #### Add / Remove Operation(s)
 Select a node (click) and click the "add (+)" icon.
-![Application](https://github.com/jetspiking/Roblocks/blob/main/Images/General.png)
+![Application](https://github.com/jetspiking/Roblocks/blob/main/Images/General.png =80x80)
 
 #### Configure Operation(s)
 Click on an operation inside a node and click the "settings" icon.
