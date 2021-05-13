@@ -23,7 +23,7 @@ Roblocks is an accessible Graphical Programming Tool which enables basic robot p
 # Installation
 Navigate to the releases tab, i.e. ```https://github.com/jetspiking/Roblocks/releases```. 
 
-Here you can download Roblocks for ```Mac OS (Silicon M1 & Intel compatible)```, ```Windows``` and ```Linux```. 
+Here you can download Roblocks for ```Mac OS``` (Silicon M1 & Intel compatible), ```Windows``` and ```Linux```. 
 
 Launch the executable to startup Roblocks, it should work out of the box. 
 
