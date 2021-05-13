@@ -24,9 +24,10 @@ Roblocks is an accessible Graphical Programming Tool which enables basic robot p
 Navigate to the releases tab, i.e. 
 ```https://github.com/jetspiking/Roblocks/releases```. 
 
-From here you can download Roblocks for ```Mac OS```, ```Windows``` and ```Linux```. Launch the executable to startup Roblocks, it should work out of the box. 
+From here you can download Roblocks for ```Mac OS```, ```Windows``` and ```Linux```. 
+Launch the executable to startup Roblocks, it should work out of the box. 
 
-The application has been verified to run on Apple Silicon (```M1```).
+_The application has been verified to run on Apple Silicon (```M1```)._
 
 # Building
 The application has been built using IntelliJ Community Edition and uses the libraries ```Gson-2.8.6``` and ```json-simple-1.1.1```. Make sure to include these as libraries using your prefered methods. 
