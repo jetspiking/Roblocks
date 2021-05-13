@@ -57,4 +57,4 @@ A more detailed log can be viewed by navigating to "View" and click on "Expand l
 # Building
 This section is inapplicable if you just want to use the application, and not tweak the Source code.  
 
-The application has been built using IntelliJ Community Edition and uses the libraries ```Gson-2.8.6``` and ```json-simple-1.1.1```. Make sure to include these as libraries using your prefered methods. 
+The application has been built using IntelliJ Community Edition and uses the libraries ```gson-2.8.6``` and ```json-simple-1.1.1```. Make sure to include these as libraries using your prefered methods. 
