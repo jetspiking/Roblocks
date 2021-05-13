@@ -9,7 +9,7 @@ Roblocks is an accessible Graphical Programming Tool which enables basic robot p
 
 # Installation
 Navigate to the releases tab, i.e. 
-```https://github.com/jetspiking/Roblocks/releases```. 
+[Releases](https://github.com/jetspiking/Roblocks/releases)
 
 From here you can download Roblocks for ```Mac OS```, ```Windows``` and ```Linux```. 
 Launch the executable to startup Roblocks, it should work out of the box. 
@@ -52,7 +52,7 @@ A more detailed log can be viewed by navigating to "View" and click on "Expand l
 <img src="https://github.com/jetspiking/Roblocks/blob/main/Images/Log.png" width="400">
 
 # Configuration (Roblocks Protocol)
-[Docs](https://htmlpreview.github.io/?https://github.com/jetspiking/Roblocks/blob/main/Roblocks/resources/files/RoblocksHelpDoc.html)
+[Documentation](https://htmlpreview.github.io/?https://github.com/jetspiking/Roblocks/blob/main/Roblocks/resources/files/RoblocksHelpDoc.html)
 
 # Building
 This section is inapplicable if you just want to use the application, and not tweak the Source code.  
