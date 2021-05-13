@@ -1,4 +1,4 @@
-![Splashscreen](https://raw.githubusercontent.com/jetspiking/Roblocks/main/Images/Splashscreen.png)
+<img src="https://raw.githubusercontent.com/jetspiking/Roblocks/main/Images/Splashscreen.png" width="450">
 
 _Accessible GUI-driven robot programming for your product_
 
@@ -21,17 +21,17 @@ _The application has been verified to run on Apple Silicon (```M1```)._
 #### Add / Remove Node(s)
 Select the Visual Edit window (center) and click the "add (+)" icon.
 
-<img src="https://github.com/jetspiking/Roblocks/blob/main/Images/Application.png" width="600">
+<img src="https://github.com/jetspiking/Roblocks/blob/main/Images/Application.png" width="400">
 
 #### Add / Remove Operation(s)
 Select a node (click) and click the "add (+)" icon.
 
-<img src="https://github.com/jetspiking/Roblocks/blob/main/Images/General.png" width="600">
+<img src="https://github.com/jetspiking/Roblocks/blob/main/Images/General.png" width="400">
 
 #### Configure Operation(s)
 Click on an operation inside a node and click the "settings" icon.
 
-<img src="https://github.com/jetspiking/Roblocks/blob/main/Images/Attributes.png" width="600">
+<img src="https://github.com/jetspiking/Roblocks/blob/main/Images/Attributes.png" width="400">
 
 #### Compile to .json file
 Click on "File" --> "Save Project" to save your project to the selected location on your disk.  
@@ -39,17 +39,17 @@ Click on "File" --> "Save Project" to save your project to the selected location
 #### Change read / write location
 Click on "App (RB)" --> "Preferences" to adjust the paths for reading and writing. 
 
-<img src="https://github.com/jetspiking/Roblocks/blob/main/Images/Preferences.png" width="600">
+<img src="https://github.com/jetspiking/Roblocks/blob/main/Images/Preferences.png" width="400">
 
 #### Hiding / Showing views
 Click on "View" and select the windows you would like to see.
 
-<img src="https://github.com/jetspiking/Roblocks/blob/main/Images/Views.png" width="600">
+<img src="https://github.com/jetspiking/Roblocks/blob/main/Images/Views.png" width="400">
 
 #### Log
 A more detailed log can be viewed by navigating to "View" and click on "Expand log".
 
-<img src="https://github.com/jetspiking/Roblocks/blob/main/Images/Log.png" width="600">
+<img src="https://github.com/jetspiking/Roblocks/blob/main/Images/Log.png" width="400">
 
 # Configuration (Roblocks Protocol)
 
