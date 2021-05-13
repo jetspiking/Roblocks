@@ -10,6 +10,8 @@ ______      _     _            _
 </pre>
 _Accessible GUI-driven robot programming for your product_
 
+![Splashscreen](https://raw.githubusercontent.com/jetspiking/Roblocks/main/Images/Splashscreen.png)
+
 # Description
 Roblocks is an accessible Graphical Programming Tool which enables basic robot programming for everyone. By configuring an outgoing JSON-protocol and recognizing this, you can link the Roblocks-GUI to your robot / product. This enables other people to control your robot, while hiding your back-end and complicated code. This makes the product an option for expositions and to let people and children create programs. 
 
