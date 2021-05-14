@@ -50,7 +50,6 @@ public class Application {
     {
         public static final String ICONS_PATH = "/feathericons/";
         public static final String APPICONS_PATH = "/appicons/";
-        public static final String FILES_PATH = "/files/";
     }
 
     /**
@@ -59,6 +58,7 @@ public class Application {
 
     public static final class URLs {
         public static final String GITHUB = "https://github.com/jetspiking/Roblocks";
+        public static final String GITHUB_PROTOCOL_HELP = "https://htmlpreview.github.io/?https://github.com/jetspiking/Roblocks/blob/main/Documentation/Protocol/RoblocksHelp.html";
     }
 
     /**
@@ -67,9 +67,6 @@ public class Application {
 
     public static final class FilesPaths
     {
-        public static final String ROBLOCKS_HELP = Paths.FILES_PATH+"RoblocksHelpDoc.html";
-
-
         public static final String ROBLOCKS_FOLDER = new JFileChooser().getFileSystemView().getDefaultDirectory().toString()+"/RoblocksData"; // FileSystemView.getFileSystemView().getDefaultDirectory().getPath()+"/Roblocks"; // "/Users/dustin/Desktop/RoblocksConfig/ToolboxConfiguration.json"
         public static final String DEFAULT_TOOLBOX_PATH = ROBLOCKS_FOLDER+"/ToolboxConfiguration.json";
         public static final String DEFAULT_SAVE_PATH = ROBLOCKS_FOLDER+"/ProgramExport.json";
