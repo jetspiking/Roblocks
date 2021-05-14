@@ -40,7 +40,7 @@ Click on an operation inside a node and click the "settings" icon.
 Click on "File", "Save Project" to save your project to the selected location on your disk.  
 
 #### Change read / write location
-Click on the app logo "RB", "Preferences" to adjust the paths for reading and writing. 
+Click on the app logo "RB", "Preferences" to adjust the paths for reading and writing. After closing the window the toolbox.json will be reloaded, if no previous file was loaded. 
 
 <img src="https://github.com/jetspiking/Roblocks/blob/main/Images/Preferences.png" width="400">
 
