@@ -16,6 +16,9 @@ Launch the executable to startup Roblocks, it should work out of the box.
 
 _The application has been verified to run on Apple Silicon (```M1```)._
 
+After the installation create your toolbox configuration ```.json``` file, as the example displayed [here](https://github.com/jetspiking/Roblocks/tree/main/Examples/JSON).
+
+
 # Usage
 
 #### Add / Remove Node(s)
