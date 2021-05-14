@@ -19,12 +19,12 @@ _The application has been verified to run on Apple Silicon (```M1```)._
 # Usage
 
 #### Add / Remove Node(s)
-Select the Visual Edit window (center) and click the "add (+)" icon.
+Select the Visual Edit window (center) and click the "add (+)" button. To remove a Node, select it (click), and click the "remove (-)" button.
 
 <img src="https://github.com/jetspiking/Roblocks/blob/main/Images/Application.png" width="400">
 
 #### Add / Remove Operation(s)
-Select a node (click) and click the "add (+)" icon.
+Select a node (click) and click the "add (+)" button. To remove an operation, select it (click), and click the "remove (-)" button.
 
 <img src="https://github.com/jetspiking/Roblocks/blob/main/Images/General.png" width="400">
 
@@ -34,15 +34,15 @@ Click on an operation inside a node and click the "settings" icon.
 <img src="https://github.com/jetspiking/Roblocks/blob/main/Images/Attributes.png" width="400">
 
 #### Compile to .json file
-Click on "File" --> "Save Project" to save your project to the selected location on your disk.  
+Click on "File", "Save Project" to save your project to the selected location on your disk.  
 
 #### Change read / write location
-Click on "App (RB)" --> "Preferences" to adjust the paths for reading and writing. 
+Click on the app logo "RB", "Preferences" to adjust the paths for reading and writing. 
 
 <img src="https://github.com/jetspiking/Roblocks/blob/main/Images/Preferences.png" width="400">
 
 #### Hiding / Showing views
-Click on "View" and select the windows you would like to see.
+Click on "View" and select the windows you would like to show / hide.
 
 <img src="https://github.com/jetspiking/Roblocks/blob/main/Images/Views.png" width="400">
 
