@@ -52,7 +52,7 @@ A more detailed log can be viewed by navigating to "View" and click on "Expand l
 <img src="https://github.com/jetspiking/Roblocks/blob/main/Images/Log.png" width="400">
 
 # Configuration (Roblocks Protocol)
-[Documentation](https://htmlpreview.github.io/?https://github.com/jetspiking/Roblocks/blob/main/Roblocks/resources/files/RoblocksHelpDoc.html)
+[Documentation](https://htmlpreview.github.io/?https://github.com/jetspiking/Roblocks/blob/main/Documentation/Protocol/RoblocksHelp.html)
 
 # Building
 This section is inapplicable if you just want to use the application, and not tweak the Source code.  
