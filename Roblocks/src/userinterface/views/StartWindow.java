@@ -284,9 +284,7 @@ public class StartWindow implements IView, ILogObserver {
         uiStartWindowTopBar.uiHelpFlyoutProtocol.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                String url = this.getClass().getResource(Application.FilesPaths.ROBLOCKS_HELP).toString();
-
-                PopupBrowser popupBrowser = new PopupBrowser("Roblocks Help", url);
+                PopupBrowser popupBrowser = new PopupBrowser("Roblocks Help", Application.URLs.GITHUB_PROTOCOL_HELP);
                 popupBrowser.show();
             }
         });
