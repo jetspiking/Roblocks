@@ -61,3 +61,6 @@ A more detailed log can be viewed by navigating to "View" and click on "Expand l
 This section is inapplicable if you just want to use the application, and not tweak the Source code.  
 
 The application has been built using IntelliJ Community Edition and uses the libraries ```gson-2.8.6``` and ```json-simple-1.1.1```. Make sure to include these as libraries using your prefered methods. 
+
+Are you interested in the architecture of Roblocks? You can view the generated Javadoc [here](https://htmlpreview.github.io/?https://github.com/jetspiking/Roblocks/blob/main/Documentation/Javadoc/index.html).
+
