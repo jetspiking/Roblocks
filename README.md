@@ -3,7 +3,7 @@
 _Accessible GUI-driven robot programming for your product_
 
 # Description
-Roblocks is an accessible Graphical Programming Tool which enables basic robot programming for everyone. By configuring an outgoing JSON-protocol and recognizing this, you can link the Roblocks-GUI to your robot / product. This enables other people to control your robot, while hiding your back-end and complicated code. This makes the product an option for expositions and to let people create programs. Also fit for education purposes. 
+Roblocks aims to be an accessible Graphical Programming Tool which enables basic robot programming for everyone. By configuring an outgoing JSON-protocol and recognizing this, you can link the Roblocks-GUI to your robot / product. This enables other people to control your robot, while hiding your back-end and complicated code. This makes the product an option for expositions and to let people create programs. Also fit for education purposes. 
 
 # Overview
 
