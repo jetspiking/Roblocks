@@ -66,3 +66,6 @@ The application has been built using IntelliJ Community Edition and uses the lib
 Currently Roblocks-Web is being developed by Jascha Huisman ([@jaschahuisman](https://github.com/jaschahuisman)), this application enables developing a program from the web, instead of being obligated to download a desktop-client. This is also a solution for devices that are not supported by the full-application.  
 
 The repository can be viewed [here](https://github.com/jaschahuisman/roblocks-web).
+
+# Contributors
+
