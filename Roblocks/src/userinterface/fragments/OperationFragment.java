@@ -8,11 +8,13 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import miscellaneous.constants.Application;
 import miscellaneous.utilities.Utils;
 import userinterface.enums.SelectionType;
 import userinterface.interfaces.IFragment;
 import userinterface.interfaces.IInteractable;
 import userinterface.interfaces.ISelectable;
+import userinterface.interfaces.IThemeSwitcher;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,7 +23,7 @@ import java.util.Arrays;
  * OperationFragment builds a view of an operation.
  */
 
-public class OperationFragment implements IFragment, ISelectable, IInteractable {
+public class OperationFragment implements IFragment, ISelectable, IInteractable, IThemeSwitcher {
     public final BorderPane uiBorderPane = new BorderPane();
     public final ToolboxFragment toolboxFragment;
     public final Label uiName;
@@ -53,7 +55,7 @@ public class OperationFragment implements IFragment, ISelectable, IInteractable 
      */
 
     private void build() {
-        uiBorderPane.setBackground(new Background(new BackgroundFill(Color.LIGHTGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+        uiBorderPane.setBackground(new Background(new BackgroundFill(Application.State.isDarkTheme?Application.Colors.DARK_MODE_COLOR:Application.Colors.LIGHT_MODE_COLOR, CornerRadii.EMPTY, Insets.EMPTY)));
         VBox.setMargin(uiBorderPane, new Insets(0,0,10,0));
 
         BorderPane typeHint = new BorderPane();
@@ -104,7 +106,7 @@ public class OperationFragment implements IFragment, ISelectable, IInteractable 
 
     @Override
     public void select() {
-        uiBorderPane.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(2,2,2,2))));
+        uiBorderPane.setBorder(new Border(new BorderStroke(Application.State.isDarkTheme?Color.WHITE:Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(2,2,2,2))));
     }
 
     /**
@@ -124,5 +126,23 @@ public class OperationFragment implements IFragment, ISelectable, IInteractable 
     @Override
     public SelectionType getType() {
         return SelectionType.OPERATION_ITEM;
+    }
+
+    /**
+     * Switch fragment to dark mode appearance.
+     */
+
+    @Override
+    public void toDarkMode() {
+        uiBorderPane.setBackground(new Background(new BackgroundFill(Application.Colors.DARK_MODE_COLOR, CornerRadii.EMPTY, Insets.EMPTY)));
+    }
+
+    /**
+     * Switch fragment to light mode appearance.
+     */
+
+    @Override
+    public void toLightMode() {
+        uiBorderPane.setBackground(new Background(new BackgroundFill(Application.Colors.LIGHT_MODE_COLOR, CornerRadii.EMPTY, Insets.EMPTY)));
     }
 }

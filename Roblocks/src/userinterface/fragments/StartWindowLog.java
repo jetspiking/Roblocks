@@ -5,12 +5,13 @@ import javafx.scene.control.TextField;
 import userinterface.interfaces.IFragment;
 import userinterface.interfaces.ISelectable;
 import userinterface.enums.SelectionType;
+import userinterface.interfaces.IThemeSwitcher;
 
 /**
  * Create the log which displays application information and messages.
  */
 
-public class StartWindowLog implements IFragment, ISelectable {
+public class StartWindowLog implements IFragment, ISelectable, IThemeSwitcher {
     public final TextField uiLog = new TextField();
 
     /**
@@ -68,5 +69,24 @@ public class StartWindowLog implements IFragment, ISelectable {
     @Override
     public SelectionType getType() {
         return SelectionType.LOG;
+    }
+
+
+    /**
+     * Switch fragment to dark mode appearance.
+     */
+
+    @Override
+    public void toDarkMode() {
+        uiLog.setStyle("-fx-text-inner-color: white;");
+    }
+
+    /**
+     * Switch fragment to light mode appearance.
+     */
+
+    @Override
+    public void toLightMode() {
+        uiLog.setStyle("-fx-text-inner-color: black;");
     }
 }

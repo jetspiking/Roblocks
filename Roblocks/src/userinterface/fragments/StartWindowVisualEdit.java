@@ -3,6 +3,7 @@ package userinterface.fragments;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -14,6 +15,8 @@ import userinterface.interfaces.ISelectable;
 import userinterface.enums.SelectionType;
 
 import java.util.ArrayList;
+
+import static miscellaneous.constants.Application.Containers.VisualEdit.IMAGEVIEW_SIZE;
 
 /**
  * Visual Edit window.
@@ -30,22 +33,60 @@ public class StartWindowVisualEdit implements IFragment, ISelectable {
 
     public StartWindowVisualEdit() {
         uiWindowScrollpane.setContent(uiWindowVisualStack);
+        uiWindowScrollpane.setBackground(null);
     }
 
     /**
-     * Adds a VisualEditFragment as a visual element.
+     * Adds a VisualEditFragment as a visual element on the last position.
      * @param fragment Fragment with data.
      */
 
     public void addVisualEditFragment(VisualEditFragment fragment) {
-        uiVisualEditFragments.add(fragment);
-        uiWindowVisualStack.getChildren().add(fragment.getFragment());
-        uiWindowVisualStack.setSpacing(10);
-        ImageView image = Utils.getImageView(this, Application.IconPaths.ARROW_RIGHT_CIRCLE,25, 25);
+        addVisualEditFragment(fragment, -1);
+    }
 
+    /**
+     * Adds a VisualEditFragment as a visual element
+     * @param fragment Fragment with data.
+     * @param index Index to add to.
+     */
+
+    public void addVisualEditFragment(VisualEditFragment fragment, int index) {
+        if (index==-1)
+            uiVisualEditFragments.add(fragment);
+        else
+            uiVisualEditFragments.add(index, fragment);
+
+        uiWindowVisualStack.setSpacing(10);
+        ImageView image = Utils.getImageView(this, Application.IconPaths.getThemeImageURL(Application.Icons.ARROW_RIGHT_CIRCLE),IMAGEVIEW_SIZE, IMAGEVIEW_SIZE);
+        image.setPickOnBounds(true);
         HBox.setMargin(fragment.getFragment(), new Insets(10,10,5,10));
         uiWindowVisualStack.setAlignment(Pos.CENTER_RIGHT);
-        uiWindowVisualStack.getChildren().add(image);
+
+        if (index==-1) {
+            uiWindowVisualStack.getChildren().add(fragment.getFragment());
+            uiWindowVisualStack.getChildren().add(image);
+        }
+        else {
+            uiWindowVisualStack.getChildren().add(index+1, fragment.getFragment());
+            uiWindowVisualStack.getChildren().add(index+1, image);
+        }
+
+
+
+    }
+
+    /**
+     * Add method to add a hint for creating the first node.
+     */
+
+    public void addFirstNodeHint() {
+        Button addNodeButton = new Button();
+        ImageView addImage = Utils.getImageView(this, Application.IconPaths.getThemeImageURL(Application.Icons.PLUS_CIRCLE), IMAGEVIEW_SIZE, IMAGEVIEW_SIZE);
+        HBox.setMargin(addNodeButton, new Insets(120,5,120,5));
+        Utils.bindNodesTransparentBackground(addNodeButton);
+        addNodeButton.setGraphic(addImage);
+        uiWindowVisualStack.getChildren().add(0, addNodeButton);
     }
 
     /**
@@ -53,15 +94,16 @@ public class StartWindowVisualEdit implements IFragment, ISelectable {
      */
 
     public void addVisualEditFragment() {
-        VisualEditFragment visualEditFragment = new VisualEditFragment();
-        uiVisualEditFragments.add(visualEditFragment);
-        uiWindowVisualStack.getChildren().add(visualEditFragment.getFragment());
-        uiWindowVisualStack.setSpacing(10);
-        ImageView image = Utils.getImageView(this, Application.IconPaths.ARROW_RIGHT_CIRCLE,25, 25);
+        addVisualEditFragment(-1);
+    }
 
-        HBox.setMargin(visualEditFragment.getFragment(), new Insets(10,10,5,10));
-        uiWindowVisualStack.setAlignment(Pos.CENTER_RIGHT);
-        uiWindowVisualStack.getChildren().add(image);
+    public void addVisualEditFragment(int index) {
+        VisualEditFragment visualEditFragment = new VisualEditFragment();
+
+        if (index!=-1)
+            addVisualEditFragment(visualEditFragment, index);
+        else
+            addVisualEditFragment(visualEditFragment);
     }
 
     /**
@@ -103,7 +145,7 @@ public class StartWindowVisualEdit implements IFragment, ISelectable {
 
     @Override
     public void select() {
-        uiWindowScrollpane.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+        uiWindowScrollpane.setBorder(new Border(new BorderStroke(Application.State.isDarkTheme?Color.WHITE:Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
     }
 
     /**

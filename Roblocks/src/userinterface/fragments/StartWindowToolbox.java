@@ -11,22 +11,25 @@ import miscellaneous.utilities.Utils;
 import userinterface.interfaces.IFragment;
 import userinterface.interfaces.ISelectable;
 import userinterface.enums.SelectionType;
+import userinterface.interfaces.IThemeSwitcher;
 import userinterface.models.ToolboxItem;
 import java.util.ArrayList;
+
+import static miscellaneous.constants.Application.Containers.TopBar.MENU_BUTTON_SIZE;
 
 /**
  * Create the toolbox view window, which displays all actions from the JSON-protocol.
  */
 
-public class StartWindowToolbox implements IFragment, ISelectable {
+public class StartWindowToolbox implements IFragment, ISelectable, IThemeSwitcher {
     public final VBox uiToolbox = new VBox();
     public final GridPane uiMetroToolBox = new GridPane();
     public final ArrayList<ToolboxFragment> uiToolboxFragments = new ArrayList<ToolboxFragment>();
 
     public final HBox uiButtonBar = new HBox();
-    public final Button uiHome = new Button("Home"); // "Home"
-    public final Button uiAdd = new Button("Add"); // "Add"
-    public final Button uiRemove = new Button("Remove"); // "Remove"
+    public final Button uiAdd = new Button(""); // "Add"
+    public final Button uiRemove = new Button(""); // "Remove"
+    public final Button uiSettings = new Button(""); // "Home"
 
     public ToolboxFragment uiSelectedNode;
 
@@ -36,21 +39,21 @@ public class StartWindowToolbox implements IFragment, ISelectable {
 
     public StartWindowToolbox()
     {
-        ImageView homeImage = Utils.getImageView(this, Application.IconPaths.HOME,20, 20);
-        uiHome.setBackground(null);
-        uiHome.setGraphic(homeImage);
+        ImageView homeImage = Utils.getImageView(this, Application.IconPaths.getThemeImageURL(Application.Icons.EDIT), MENU_BUTTON_SIZE, MENU_BUTTON_SIZE);
+        uiSettings.setBackground(null);
+        uiSettings.setGraphic(homeImage);
 
-        ImageView addImage = Utils.getImageView(this, Application.IconPaths.PLUS_CIRCLE,20, 20);
+        ImageView addImage = Utils.getImageView(this, Application.IconPaths.getThemeImageURL(Application.Icons.PLUS_CIRCLE),MENU_BUTTON_SIZE, MENU_BUTTON_SIZE);
         uiAdd.setBackground(null);
         uiAdd.setGraphic(addImage);
 
-        ImageView removeImage = Utils.getImageView(this, Application.IconPaths.MINUS_CIRCLE,20, 20);
+        ImageView removeImage = Utils.getImageView(this, Application.IconPaths.getThemeImageURL(Application.Icons.MINUS_CIRCLE),MENU_BUTTON_SIZE, MENU_BUTTON_SIZE);
         uiRemove.setBackground(null);
         uiRemove.setGraphic(removeImage);
 
-        Utils.bindNodesTransparentBackground(uiHome, uiAdd, uiRemove);
+        Utils.bindNodesTransparentBackground(uiSettings, uiAdd, uiRemove);
 
-        uiButtonBar.getChildren().addAll(uiAdd, uiRemove); // REMOVED m_home from adding
+        uiButtonBar.getChildren().addAll(uiAdd, uiRemove, uiSettings);
 
         uiToolbox.getChildren().add(uiButtonBar);
 
@@ -64,6 +67,9 @@ public class StartWindowToolbox implements IFragment, ISelectable {
 
         toolBox.prefHeightProperty().bind(uiToolbox.heightProperty());
         toolBox.setContent(uiMetroToolBox);
+
+        uiMetroToolBox.vgapProperty().bind(uiToolbox.heightProperty().divide(200));
+        uiMetroToolBox.hgapProperty().bind(uiToolbox.heightProperty().divide(200));
     }
 
     /**
@@ -82,20 +88,20 @@ public class StartWindowToolbox implements IFragment, ISelectable {
 
         for (ToolboxItem toolboxItem : toolboxItems)
         {
-            String path = Application.Paths.ICONS_PATH+toolboxItem.getImageName();
+            String path = Application.IconPaths.getThemeImageURL(toolboxItem.getImageName());
             boolean exists = Utils.verifyExistingLocation(path, this);
 
-            ImageView imageView = Utils.getImageView(this, exists?path:Application.IconPaths.X,20, 20);
+            ImageView imageView = Utils.getImageView(this, exists?Application.IconPaths.getThemeImageURL(toolboxItem.getImageName()):Application.IconPaths.getThemeImageURL(Application.Icons.X),MENU_BUTTON_SIZE, MENU_BUTTON_SIZE);
 
             ToolboxFragment toolboxFragment = new ToolboxFragment(toolboxItem, imageView);
-            toolboxFragment.setColor(Utils.getRandomBrightColor());
-
-            ((BorderPane)toolboxFragment.getFragment()).prefWidthProperty().bind(uiToolbox.widthProperty().divide(gridwidth));
-            ((BorderPane)toolboxFragment.getFragment()).prefHeightProperty().bind(uiToolbox.widthProperty().divide(gridwidth));
+            toolboxFragment.setColor(Application.State.isDarkTheme?Utils.getRandomDarkColor():Utils.getRandomBrightColor());
 
             uiMetroToolBox.add(toolboxFragment.getFragment(), x++%2, y++/2);
 
             uiToolboxFragments.add(toolboxFragment);
+
+            ((BorderPane)toolboxFragment.getFragment()).prefWidthProperty().bind(uiToolbox.widthProperty().divide(gridwidth));
+            ((BorderPane)toolboxFragment.getFragment()).prefHeightProperty().bind(uiToolbox.widthProperty().divide(gridwidth));
         }
     }
 
@@ -129,7 +135,7 @@ public class StartWindowToolbox implements IFragment, ISelectable {
 
     @Override
     public void select() {
-        uiButtonBar.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+        uiButtonBar.setBorder(new Border(new BorderStroke(Application.State.isDarkTheme?Color.WHITE:Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
     }
 
     /**
@@ -149,5 +155,37 @@ public class StartWindowToolbox implements IFragment, ISelectable {
     @Override
     public SelectionType getType() {
         return SelectionType.TOOLBOX;
+    }
+
+    /**
+     * Switch fragment to dark mode appearance.
+     */
+
+    @Override
+    public void toDarkMode() {
+        ImageView homeImage = Utils.getImageView(this, Application.IconPaths.getThemeImageURL(Application.Icons.EDIT), MENU_BUTTON_SIZE, MENU_BUTTON_SIZE);
+        uiSettings.setGraphic(homeImage);
+
+        ImageView addImage = Utils.getImageView(this, Application.IconPaths.getThemeImageURL(Application.Icons.PLUS_CIRCLE),MENU_BUTTON_SIZE, MENU_BUTTON_SIZE);
+        uiAdd.setGraphic(addImage);
+
+        ImageView removeImage = Utils.getImageView(this, Application.IconPaths.getThemeImageURL(Application.Icons.MINUS_CIRCLE),MENU_BUTTON_SIZE, MENU_BUTTON_SIZE);
+        uiRemove.setGraphic(removeImage);
+    }
+
+    /**
+     * Switch fragment to light mode appearance.
+     */
+
+    @Override
+    public void toLightMode() {
+        ImageView homeImage = Utils.getImageView(this, Application.IconPaths.getThemeImageURL(Application.Icons.EDIT), MENU_BUTTON_SIZE, MENU_BUTTON_SIZE);
+        uiSettings.setGraphic(homeImage);
+
+        ImageView addImage = Utils.getImageView(this, Application.IconPaths.getThemeImageURL(Application.Icons.PLUS_CIRCLE),MENU_BUTTON_SIZE, MENU_BUTTON_SIZE);
+        uiAdd.setGraphic(addImage);
+
+        ImageView removeImage = Utils.getImageView(this, Application.IconPaths.getThemeImageURL(Application.Icons.MINUS_CIRCLE),MENU_BUTTON_SIZE, MENU_BUTTON_SIZE);
+        uiRemove.setGraphic(removeImage);
     }
 }

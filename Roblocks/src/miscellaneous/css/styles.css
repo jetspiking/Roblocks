@@ -1,0 +1,30 @@
+.fluent-menu .arrow-button
+{
+    -fx-background-color: null;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 0.0em 0em 0.0em 0.0em;
+}
+
+.fluent-menu .arrow-button .arrow
+{
+    -fx-background-color: -fx-mark-highlight-color, -fx-mark-color;
+    -fx-background-insets: 0 0 0 0, 0;
+    -fx-padding: 0em 0em 0em 0em;
+    -fx-shape: null;
+}
+
+.transparent-button {
+    -fx-background-color: null;
+    -fx-background-insets: 0 0 0 0, 0;
+}
+
+.dark-mode {
+    -fx-text-fill: white;
+    -fx-text-inner-color: white;
+}
+
+.light-mode {
+    -fx-text-fill: black;
+    -fx-text-inner-color: white;
+}

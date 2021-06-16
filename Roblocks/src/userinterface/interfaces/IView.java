@@ -7,5 +7,5 @@ import javafx.scene.Parent;
  */
 
 public interface IView {
-    Parent GetView();
+    Parent getView();
 }

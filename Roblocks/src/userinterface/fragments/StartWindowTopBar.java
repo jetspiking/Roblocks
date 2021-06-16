@@ -1,5 +1,7 @@
 package userinterface.fragments;
 
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.CheckMenuItem;
 import miscellaneous.constants.Application;
 import javafx.scene.Node;
@@ -9,12 +11,17 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import miscellaneous.utilities.Utils;
 import userinterface.interfaces.IFragment;
+import userinterface.interfaces.IThemeSwitcher;
+
+import static miscellaneous.constants.Application.Containers.TopBar.LOGO_SIZE_INCREASE;
+import static miscellaneous.constants.Application.Containers.TopBar.MENU_BUTTON_SIZE;
+import static miscellaneous.utilities.Utils.createMenuButton;
 
 /**
  * Generates the application top-bar (menu).
  */
 
-public class StartWindowTopBar implements IFragment {
+public class StartWindowTopBar implements IFragment, IThemeSwitcher {
     private final HBox uiTopBar = new HBox();
 
     public MenuButton uiAppFlyout;
@@ -49,7 +56,7 @@ public class StartWindowTopBar implements IFragment {
      */
 
     public StartWindowTopBar() {
-        uiTopBar.setPrefHeight(Application.Containers.TopBar.MENU_BUTTON_SIZE);
+        uiTopBar.setPrefHeight(MENU_BUTTON_SIZE);
         uiTopBar.setSpacing(15);
 
         initAppMenu();
@@ -69,6 +76,7 @@ public class StartWindowTopBar implements IFragment {
 
     private void setLayout()
     {
+        uiTopBar.setAlignment(Pos.CENTER_LEFT);
         uiAppFlyout.setFont(Application.Containers.TopBar.MENU_BUTTON_FONT);
         uiFileFlyout.setFont(Application.Containers.TopBar.MENU_BUTTON_FONT);
         uiViewFlyout.setFont(Application.Containers.TopBar.MENU_BUTTON_FONT);
@@ -84,8 +92,9 @@ public class StartWindowTopBar implements IFragment {
     private void initAppMenu()
     {
         // Main Button
-        ImageView menuImage = Utils.getImageView(this, Application.IconPaths.ROBLOCKS_LOGO, 20, 20);
-        uiAppFlyout = createMenuButton(menuImage, ""); // App
+        ImageView menuImage = Utils.getImageView(this, Application.IconPaths.ROBLOCKS_LOGO, MENU_BUTTON_SIZE+15, MENU_BUTTON_SIZE+15);
+        uiAppFlyout = createMenuButton(menuImage, "", true); // App
+        HBox.setMargin(uiAppFlyout, new Insets(-(LOGO_SIZE_INCREASE/2.),0,-(LOGO_SIZE_INCREASE/2.),0));
 
         uiAppFlyout.getItems().addAll(uiAppFlyoutPreferences, uiAppFlyoutExit);
     }
@@ -97,9 +106,8 @@ public class StartWindowTopBar implements IFragment {
     private void initFileMenu()
     {
         // File Button
-        ImageView menuImage = Utils.getImageView(this, Application.IconPaths.FILE,20, 20);
-        uiFileFlyout = createMenuButton(menuImage, "File");
-
+        ImageView menuImage = Utils.getImageView(this, Application.IconPaths.getThemeImageURL(Application.Icons.FILE),MENU_BUTTON_SIZE, MENU_BUTTON_SIZE);
+        uiFileFlyout = createMenuButton(menuImage, "File", true);
         uiFileFlyout.getItems().addAll(uiFileFlyoutOpenProject, uiFileFlyoutSaveProject); // m_fileFlyoutCloseProject
     }
 
@@ -110,9 +118,8 @@ public class StartWindowTopBar implements IFragment {
     private void initViewMenu()
     {
         // View Button
-        ImageView menuImage = Utils.getImageView(this, Application.IconPaths.BOOK,20, 20);
-        uiViewFlyout = createMenuButton(menuImage, "View");
-
+        ImageView menuImage = Utils.getImageView(this, Application.IconPaths.getThemeImageURL(Application.Icons.BOOK),MENU_BUTTON_SIZE, MENU_BUTTON_SIZE);
+        uiViewFlyout = createMenuButton(menuImage, "View", true);
         uiViewFlyout.getItems().addAll(uiViewFlyoutOutput, uiViewFlyoutBlockSequence, uiViewFlyoutToolbox, uiViewFlyoutLog, uiViewFlyoutExpandLog);
     }
 
@@ -123,9 +130,8 @@ public class StartWindowTopBar implements IFragment {
     private void initBuildMenu()
     {
         // Build Button
-        ImageView menuImage = Utils.getImageView(this, Application.IconPaths.CODE,20, 20);
-        uiBuildFlyout = createMenuButton(menuImage, "Build");
-
+        ImageView menuImage = Utils.getImageView(this, Application.IconPaths.getThemeImageURL(Application.Icons.CODE),MENU_BUTTON_SIZE, MENU_BUTTON_SIZE);
+        uiBuildFlyout = createMenuButton(menuImage, "Build", true);
         uiBuildFlyout.getItems().addAll(uiBuildFlyoutCompile, uiBuildFlyoutUpload); // mBuildFlyoutExport
     }
 
@@ -136,9 +142,8 @@ public class StartWindowTopBar implements IFragment {
     private void initAboutMenu()
     {
         // About Button
-        ImageView menuImage = Utils.getImageView(this, Application.IconPaths.GITHUB,20, 20);
-        uiAboutFlyout = createMenuButton(menuImage, "About");
-
+        ImageView menuImage = Utils.getImageView(this, Application.IconPaths.getThemeImageURL(Application.Icons.GITHUB),MENU_BUTTON_SIZE, MENU_BUTTON_SIZE);
+        uiAboutFlyout = createMenuButton(menuImage, "About", true);
         uiAboutFlyout.getItems().addAll(uiAboutFlyoutSourceCode);
     }
 
@@ -149,28 +154,9 @@ public class StartWindowTopBar implements IFragment {
     private void initHelpMenu()
     {
         // Help Button
-        ImageView menuImage = Utils.getImageView(this, Application.IconPaths.HELP_CIRCLE,20, 20);
-        uiHelpFlyout = createMenuButton(menuImage, "Help");
-
+        ImageView menuImage = Utils.getImageView(this, Application.IconPaths.getThemeImageURL(Application.Icons.HELP_CIRCLE),MENU_BUTTON_SIZE, MENU_BUTTON_SIZE);
+        uiHelpFlyout = createMenuButton(menuImage, "Help", true);
         uiHelpFlyout.getItems().addAll(uiHelpFlyoutProtocol);
-    }
-
-    /**
-     * Add new MenuButton helper function.
-     * @param imageView Image.
-     * @param text Title.
-     * @return MenuButton.
-     */
-
-    private MenuButton createMenuButton(ImageView imageView, String text)
-    {
-        MenuButton menuButton = new MenuButton();
-        menuButton.setBackground(null);
-        if (text!=null)
-            menuButton.setText(text);
-        if (imageView!=null)
-            menuButton.setGraphic(imageView);
-        return menuButton;
     }
 
     /**
@@ -181,5 +167,47 @@ public class StartWindowTopBar implements IFragment {
     @Override
     public Node getFragment() {
         return this.uiTopBar;
+    }
+
+    /**
+     * Switch fragment to dark mode appearance.
+     */
+    @Override
+    public void toDarkMode() {
+        ImageView menuImageFile = Utils.getImageView(this, Application.IconPaths.getThemeImageURL(Application.Icons.FILE),MENU_BUTTON_SIZE, MENU_BUTTON_SIZE);
+        uiFileFlyout.setGraphic(menuImageFile);
+
+        ImageView menuImageView = Utils.getImageView(this, Application.IconPaths.getThemeImageURL(Application.Icons.BOOK),MENU_BUTTON_SIZE, MENU_BUTTON_SIZE);
+        uiViewFlyout.setGraphic(menuImageView);
+
+        ImageView menuImageBuild = Utils.getImageView(this, Application.IconPaths.getThemeImageURL(Application.Icons.CODE),MENU_BUTTON_SIZE, MENU_BUTTON_SIZE);
+        uiBuildFlyout.setGraphic(menuImageBuild);
+
+        ImageView menuImageAbout = Utils.getImageView(this, Application.IconPaths.getThemeImageURL(Application.Icons.GITHUB),MENU_BUTTON_SIZE, MENU_BUTTON_SIZE);
+        uiAboutFlyout.setGraphic(menuImageAbout);
+
+        ImageView menuImageHelp = Utils.getImageView(this, Application.IconPaths.getThemeImageURL(Application.Icons.HELP_CIRCLE),MENU_BUTTON_SIZE, MENU_BUTTON_SIZE);
+        uiHelpFlyout.setGraphic(menuImageHelp);
+    }
+
+    /**
+     * Switch fragment to light mode appearance.
+     */
+    @Override
+    public void toLightMode() {
+        ImageView menuImageFile = Utils.getImageView(this, Application.IconPaths.getThemeImageURL(Application.Icons.FILE),MENU_BUTTON_SIZE, MENU_BUTTON_SIZE);
+        uiFileFlyout.setGraphic(menuImageFile);
+
+        ImageView menuImageView = Utils.getImageView(this, Application.IconPaths.getThemeImageURL(Application.Icons.BOOK),MENU_BUTTON_SIZE, MENU_BUTTON_SIZE);
+        uiViewFlyout.setGraphic(menuImageView);
+
+        ImageView menuImageBuild = Utils.getImageView(this, Application.IconPaths.getThemeImageURL(Application.Icons.CODE),MENU_BUTTON_SIZE, MENU_BUTTON_SIZE);
+        uiBuildFlyout.setGraphic(menuImageBuild);
+
+        ImageView menuImageAbout = Utils.getImageView(this, Application.IconPaths.getThemeImageURL(Application.Icons.GITHUB),MENU_BUTTON_SIZE, MENU_BUTTON_SIZE);
+        uiAboutFlyout.setGraphic(menuImageAbout);
+
+        ImageView menuImageHelp = Utils.getImageView(this, Application.IconPaths.getThemeImageURL(Application.Icons.HELP_CIRCLE),MENU_BUTTON_SIZE, MENU_BUTTON_SIZE);
+        uiHelpFlyout.setGraphic(menuImageHelp);
     }
 }

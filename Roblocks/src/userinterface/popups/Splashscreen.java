@@ -10,12 +10,15 @@ import userinterface.interfaces.IFragment;
 import userinterface.interfaces.IHideable;
 import userinterface.interfaces.ISplashscreen;
 
+import static miscellaneous.constants.Application.Stages.SplashScreen.SPLASHSCREEN_HEIGHT;
+import static miscellaneous.constants.Application.Stages.SplashScreen.SPLASHSCREEN_WIDTH;
+
 /**
  * Splashscreen window.
  */
 
 public class Splashscreen implements IHideable, IFragment {
-    public final ImageView uiIcon = Utils.getImageView(this, Application.IconPaths.ROBLOCKS_SPLASHSCREEN, 500, 300);
+    public final ImageView uiIcon = Utils.getImageView(this, Application.IconPaths.ROBLOCKS_SPLASHSCREEN, SPLASHSCREEN_WIDTH, SPLASHSCREEN_HEIGHT);
     public final ISplashscreen iSplashscreen;
 
     /**

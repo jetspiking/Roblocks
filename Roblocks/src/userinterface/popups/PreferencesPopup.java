@@ -5,11 +5,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import miscellaneous.constants.Application;
 import userinterface.fragments.DoubleListingFragment;
 import userinterface.interfaces.IHideable;
+import userinterface.jfxcustom.JFXToggleBtn;
 
 /**
  * Preferences popup-window.
@@ -25,12 +27,15 @@ public class PreferencesPopup implements IHideable {
 
     public final DoubleListingFragment<Label, TextField> uiPathsList;
     public final DoubleListingFragment<Label, TextField> uiConnectionList;
+    public final DoubleListingFragment<Label, Region> uiToggleButtonList;
 
     public final TextField uiToolboxConfigPath = new TextField();
     public final TextField uiSavePath = new TextField();
 
     public final TextField uiIpAddress = new TextField();
     public final TextField uiPort = new TextField();
+
+    public final JFXToggleBtn uiDarkMode = new JFXToggleBtn(30,false);
 
     /**
      * Constructs the preferences popup-window.
@@ -46,6 +51,7 @@ public class PreferencesPopup implements IHideable {
 
         uiPathsList = new DoubleListingFragment<>(Application.InterfaceStrings.PATHS);
         uiConnectionList = new DoubleListingFragment<>(Application.InterfaceStrings.CONNECTION);
+        uiToggleButtonList = new DoubleListingFragment<>(Application.InterfaceStrings.INTERFACES);
 
         uiPathsList.add(new Label("Toolbox JSON path"), uiToolboxConfigPath);
         uiPathsList.add(new Label("Save JSON path"), uiSavePath);
@@ -53,7 +59,9 @@ public class PreferencesPopup implements IHideable {
         uiConnectionList.add(new Label("Upload ip-address"), uiIpAddress);
         uiConnectionList.add(new Label("Upload port"), uiPort);
 
-        uiContentStack.getChildren().addAll(uiPathsList.getFragment(), uiConnectionList.getFragment());
+        uiToggleButtonList.add(new Label("Dark mode"), uiDarkMode.getSwitch());
+
+        uiContentStack.getChildren().addAll(uiPathsList.getFragment(), uiConnectionList.getFragment(), uiToggleButtonList.getFragment());
     }
 
     /**

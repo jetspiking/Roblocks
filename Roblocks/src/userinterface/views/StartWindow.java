@@ -3,24 +3,22 @@ package userinterface.views;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.*;
 import javafx.stage.WindowEvent;
 import miscellaneous.constants.Application;
 import miscellaneous.models.LogMessage;
-import miscellaneous.utilities.LogKeeper;
-import miscellaneous.utilities.RoblocksEncDec;
-import miscellaneous.utilities.SystemConfigurationDecoder;
-import miscellaneous.utilities.SystemConfigurationReader;
+import miscellaneous.utilities.*;
 import org.json.simple.JSONObject;
 import userinterface.enums.SelectionActionType;
-import userinterface.enums.SelectionType;
 import userinterface.fragments.*;
 import userinterface.interfaces.ILogObserver;
 import userinterface.interfaces.ISelectable;
@@ -71,6 +69,7 @@ public class StartWindow implements IView, ILogObserver {
 
         TextField logBox = (TextField) uiStartWindowLog.getFragment();
         this.uiMain.setBottom(logBox);
+
 
         createFolder();
         fillToolbox(Application.FilesPaths.DEFAULT_TOOLBOX_PATH);
@@ -162,7 +161,6 @@ public class StartWindow implements IView, ILogObserver {
 
         uiPreferencesPopup.uiToolboxConfigPath.setText(Application.FilesPaths.DEFAULT_TOOLBOX_PATH);
         uiPreferencesPopup.uiSavePath.setText(Application.FilesPaths.DEFAULT_SAVE_PATH);
-
     }
 
     /**
@@ -181,8 +179,7 @@ public class StartWindow implements IView, ILogObserver {
                 uiPreferencesPopup.uiStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                     @Override
                     public void handle(WindowEvent event) {
-                        if (uiStartWindowContent.toolbox.uiToolboxFragments.size()<1)
-                            fillToolbox(uiPreferencesPopup.uiToolboxConfigPath.getText());
+                        fillToolbox(uiPreferencesPopup.uiToolboxConfigPath.getText());
                     }
                 });
             }
@@ -303,7 +300,7 @@ public class StartWindow implements IView, ILogObserver {
                 public void handle(MouseEvent event) {
                     //updateSelectedNode(toolboxFragment);
                     uiStartWindowContent.toolbox.updateSelectedNode(toolboxFragment);
-                    LogMessage logMessage = new LogMessage("Selected component \""+toolboxFragment.uiToolboxItem.getName()+"\" - \""+toolboxFragment.uiToolboxItem.getDescription()+"\"", LogMessage.LogMessageType.VERBOSE);
+                    LogMessage logMessage = new LogMessage("Selected Operation \""+toolboxFragment.uiToolboxItem.getName()+"\" - \""+toolboxFragment.uiToolboxItem.getDescription()+"\"", LogMessage.LogMessageType.VERBOSE);
                     logKeeper.add(logMessage);
                 }
             });
@@ -336,12 +333,6 @@ public class StartWindow implements IView, ILogObserver {
             }
         });
 
-        uiStartWindowContent.toolbox.uiHome.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-
-            }
-        });
         uiStartWindowContent.toolbox.uiAdd.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -353,6 +344,51 @@ public class StartWindow implements IView, ILogObserver {
             @Override
             public void handle(MouseEvent event) {
                 evaluateAction(SelectionActionType.REMOVE);
+            }
+        });
+
+        uiStartWindowContent.toolbox.uiSettings.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                evaluateAction(SelectionActionType.SETTINGS);
+            }
+        });
+
+        StartWindow startWindow=this;
+        //  For Dark Mode
+        uiPreferencesPopup.uiDarkMode.getIsOn().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                Application.State.isDarkTheme = newValue;
+
+                if (newValue)
+                {
+                    startWindow.getView().setStyle("-fx-base: rgba(20, 20, 20, 255);");
+                    StartWindow.this.uiStartWindowContent.visualEdit.uiVisualEditFragments.forEach(visualEditFragment -> {
+                        visualEditFragment.toDarkMode();
+                        visualEditFragment.uiOperationFragments.forEach(OperationFragment::toDarkMode);
+                    });
+                    uiStartWindowLog.toDarkMode();
+                    uiStartWindowContent.output.toDarkMode();
+                    uiStartWindowTopBar.toDarkMode();
+                    uiStartWindowContent.toolbox.toDarkMode();
+                }
+                else
+                {
+                    startWindow.getView().setStyle("-fx-base: rgba(255, 255, 255, 255);");
+                    StartWindow.this.uiStartWindowContent.visualEdit.uiVisualEditFragments.forEach(visualEditFragment -> {
+                        visualEditFragment.toLightMode();
+                        visualEditFragment.uiOperationFragments.forEach(OperationFragment::toLightMode);
+                    });
+                    uiStartWindowLog.toLightMode();
+                    uiStartWindowContent.output.toLightMode();
+                    uiStartWindowTopBar.toLightMode();
+                    uiStartWindowContent.toolbox.toLightMode();
+                }
+                if (uiSelectedNode!=null)
+                    uiSelectedNode.select();
+                if (uiStartWindowContent.toolbox.uiSelectedNode!=null)
+                    uiStartWindowContent.toolbox.uiSelectedNode.select();
             }
         });
     }
@@ -373,6 +409,14 @@ public class StartWindow implements IView, ILogObserver {
             uiStartWindowContent.toolbox.setToolbox(systemConfigurationDecoder.getToolboxItemCollection());
         }
         bindActions();
+
+
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                uiStartWindowContent.toolbox.uiMetroToolBox.getChildren().forEach(Node::autosize);
+            }
+        });
     }
 
     /**
@@ -392,10 +436,17 @@ public class StartWindow implements IView, ILogObserver {
                 uiStartWindowContent.visualEdit.addVisualEditFragment(visualEditFragment);
                 bindVisualEditActions(visualEditFragment);
                 visualEditFragment.uiOperationFragments.forEach(this::bindVisualEditItemActions);
+
+                visualEditFragment.uiMenuFlyoutDelete.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        removeVisualEditFragment(visualEditFragment);
+                    }
+                });
             });
 
-            logKeeper.add(new LogMessage("Visualized from JSON.", LogMessage.LogMessageType.VERBOSE));
             compileToJson();
+
         } catch (Exception e) {
             logKeeper.add(new LogMessage(e.getMessage(), LogMessage.LogMessageType.ERROR));
         }
@@ -416,9 +467,19 @@ public class StartWindow implements IView, ILogObserver {
         this.json = json.toJSONString();
         uiStartWindowContent.output.uiOutput.setText(prettyJson);
 
-        logKeeper.add(new LogMessage("Compiled to JSON.", LogMessage.LogMessageType.VERBOSE));
-
         return json.toJSONString();
+    }
+
+    /**
+     * Remove a Visual Edit Fragment
+     * @param visualEditFragment VisualEditFragment
+     */
+
+    private void removeVisualEditFragment(VisualEditFragment visualEditFragment) {
+        uiStartWindowContent.visualEdit.removeVisualEditFragment(visualEditFragment);
+        uiSelectedNode =null;
+        compileToJson();
+        logKeeper.add(new LogMessage("Removed Visual Node \""+visualEditFragment.name+"\".", LogMessage.LogMessageType.VERBOSE));
     }
 
     /**
@@ -434,11 +495,18 @@ public class StartWindow implements IView, ILogObserver {
 
             case VISUAL_EDIT:
 
-                if (actionType==SelectionActionType.ADD)
-                {
+                if (actionType == SelectionActionType.ADD) {
                     uiStartWindowContent.visualEdit.addVisualEditFragment();
                     final VisualEditFragment visualEditFragment = uiStartWindowContent.visualEdit.getLastVisualEditFragment();
-                    logKeeper.add(new LogMessage("Added visual node block "+visualEditFragment.name, LogMessage.LogMessageType.VERBOSE));
+
+                    visualEditFragment.uiMenuFlyoutDelete.setOnAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            removeVisualEditFragment(visualEditFragment);
+                        }
+                    });
+
+                    logKeeper.add(new LogMessage("Added Visual Node \"" + visualEditFragment.name+"\".", LogMessage.LogMessageType.VERBOSE));
                     bindVisualEditActions(visualEditFragment);
                 }
 
@@ -446,20 +514,16 @@ public class StartWindow implements IView, ILogObserver {
 
             case VISUAL_EDIT_ITEM:
 
-                if (actionType==SelectionActionType.ADD && uiStartWindowContent.toolbox.uiSelectedNode !=null)
-                {
+                if (actionType == SelectionActionType.ADD && uiStartWindowContent.toolbox.uiSelectedNode != null) {
                     VisualEditFragment visualEditFragment = (VisualEditFragment) uiSelectedNode;
                     visualEditFragment.addOperationFragment(uiStartWindowContent.toolbox.uiSelectedNode);
                     OperationFragment operationFragment = visualEditFragment.getLastOperationFragment();
-                    logKeeper.add(new LogMessage("Added operation fragment node "+operationFragment.name, LogMessage.LogMessageType.VERBOSE));
+                    logKeeper.add(new LogMessage("Added Operation \"" + operationFragment.name+"\".", LogMessage.LogMessageType.VERBOSE));
                     bindVisualEditItemActions(operationFragment);
                 }
 
-                if (actionType==SelectionActionType.REMOVE)
-                {
-                    uiStartWindowContent.visualEdit.removeVisualEditFragment(uiSelectedNode);
-                    logKeeper.add(new LogMessage("Removed operation fragment node.", LogMessage.LogMessageType.VERBOSE));
-                    uiSelectedNode =null;
+                if (actionType == SelectionActionType.REMOVE) {
+                    removeVisualEditFragment((VisualEditFragment) uiSelectedNode);
                 }
 
                 break;
@@ -473,9 +537,29 @@ public class StartWindow implements IView, ILogObserver {
                 {
                     uiStartWindowContent.visualEdit.uiVisualEditFragments.forEach(visualFragment -> {
                         visualFragment.removeOperationFragment((OperationFragment) uiSelectedNode);
-                        logKeeper.add(new LogMessage("Removed visual fragment node.", LogMessage.LogMessageType.VERBOSE));
+                        logKeeper.add(new LogMessage("Removed Visual Node.", LogMessage.LogMessageType.VERBOSE));
                     });
                    uiSelectedNode =null;
+                }
+
+                if (actionType == SelectionActionType.SETTINGS)
+                {
+                    OperationFragment operationFragment = (OperationFragment) uiSelectedNode;
+                    logKeeper.add(new LogMessage("Opening properties for operation \""+operationFragment.name+"\".", LogMessage.LogMessageType.VERBOSE));
+                    OperationPopup operationPopup = new OperationPopup(operationFragment);
+                    operationPopup.uiOperationStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                        @Override
+                        public void handle(WindowEvent event) {
+                            operationPopup.operationFragment.attributeValues.clear();
+                            operationPopup.uiAttributeList.uiObjectsRightStack.getChildren().forEach(attribute -> {
+                                TextField textField = (TextField)attribute;
+                                String attributeText = textField.getText();
+                                operationPopup.operationFragment.attributeValues.add(attributeText);
+                            });
+                            compileToJson();
+                        }
+                    });
+                    operationPopup.show();
                 }
 
                 break;
@@ -499,28 +583,6 @@ public class StartWindow implements IView, ILogObserver {
             public void handle(MouseEvent event) {
                 updateSelectedNode(visualEditFragment);
                 event.consume();
-            }
-        });
-        visualEditFragment.uiSettingsButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                if (uiSelectedNode.getType()== SelectionType.OPERATION_ITEM) {
-                    OperationFragment operationFragment = (OperationFragment) uiSelectedNode;
-                    OperationPopup operationPopup = new OperationPopup(operationFragment);
-                    operationPopup.uiOperationStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-                        @Override
-                        public void handle(WindowEvent event) {
-                            operationPopup.operationFragment.attributeValues.clear();
-                            operationPopup.uiAttributeList.uiObjectsRightStack.getChildren().forEach(attribute -> {
-                                TextField textField = (TextField)attribute;
-                                String attributeText = textField.getText();
-                                operationPopup.operationFragment.attributeValues.add(attributeText);
-                            });
-                            compileToJson();
-                        }
-                    });
-                    operationPopup.show();
-                }
             }
         });
     }
@@ -574,7 +636,7 @@ public class StartWindow implements IView, ILogObserver {
      */
 
     @Override
-    public Parent GetView()
+    public Parent getView()
     {
         return uiMain;
     }

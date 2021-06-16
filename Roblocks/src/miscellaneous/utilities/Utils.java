@@ -1,6 +1,7 @@
 package miscellaneous.utilities;
 
 import javafx.scene.Node;
+import javafx.scene.control.MenuButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
@@ -28,6 +29,8 @@ public class Utils
         ImageView menuImage = Utils.imageFromUri(path, context);
         menuImage.setFitWidth(width);
         menuImage.setFitHeight(height);
+        menuImage.setSmooth(true);
+        menuImage.setCache(true);
         return menuImage;
     }
 
@@ -38,6 +41,7 @@ public class Utils
 
     public static void bindNodeTransparentBackground(Node node) {
         node.setStyle("-fx-background-color: transparent;");
+        node.getStyleClass().add("transparent-button");
     }
 
     /**
@@ -97,6 +101,25 @@ public class Utils
     }
 
     /**
+     * Add new MenuButton helper function.
+     * @param imageView Image.
+     * @param text Title.
+     * @return MenuButton.
+     */
+
+    public static MenuButton createMenuButton(ImageView imageView, String text, boolean showTriangle)
+    {
+        MenuButton menuButton = new MenuButton(text, imageView);
+        menuButton.setBackground(null);
+        menuButton.getStyleClass().add("transparent-button");
+
+        if (!showTriangle)
+            menuButton.getStyleClass().add("fluent-menu");
+
+        return menuButton;
+    }
+
+    /**
      * Get a random color.
      * @return JavaFX Color.
      */
@@ -123,6 +146,19 @@ public class Utils
         float r = randomNumberGenerator.nextFloat() / 2f + .5f;
         float g = randomNumberGenerator.nextFloat() / 2f + .5f;
         float b = randomNumberGenerator.nextFloat() / 2f + .5f;
+        return Color.rgb((int)(r*255),(int)(g*255),(int)(b*255));
+    }
+
+    /**
+     * Get a random dark color.
+     * @return JavaFX Color.
+     */
+
+    public static Color getRandomDarkColor() {
+        Random randomNumberGenerator = new Random();
+        float r = randomNumberGenerator.nextFloat() / 3f + .3f;
+        float g = randomNumberGenerator.nextFloat() / 3f + .3f;
+        float b = randomNumberGenerator.nextFloat() / 3f + .3f;
         return Color.rgb((int)(r*255),(int)(g*255),(int)(b*255));
     }
 }

@@ -26,6 +26,9 @@ import userinterface.interfaces.ISplashscreen;
 import userinterface.popups.Splashscreen;
 import userinterface.views.StartWindow;
 
+import static miscellaneous.constants.Application.Stages.SplashScreen.SPLASHSCREEN_HEIGHT;
+import static miscellaneous.constants.Application.Stages.SplashScreen.SPLASHSCREEN_WIDTH;
+
 public class Main extends Application {
 
     public static Stage stage;
@@ -40,14 +43,17 @@ public class Main extends Application {
             public void loaded() {
                 splashScreenStage.close();                                                              // After timeout-period close splashscreen.
                 primaryStage.setTitle(miscellaneous.constants.Application.Strings.APPLICATION_TITLE);   // Set title to application name (Roblocks).
-                primaryStage.setScene(new Scene(new StartWindow().GetView(), 800, 600));   // Set view and default application width and height.
+                StartWindow startWindow = new StartWindow();                                            // Create startWindow while displaying splash screen.
+                Scene scene = new Scene(startWindow.getView(), 800, 600);                  // Create scene.
+                scene.getStylesheets().add("/miscellaneous/css/styles.css");                            // Bind css.
+                primaryStage.setScene(scene);                                                           // Set view and default application width and height.
                 primaryStage.show();                                                                    // Show view.
             }
         });
 
         splashScreenStage.setScene(new Scene(new Group(splashscreen.getFragment())));                   // Set scene for splashscreen.
-        splashScreenStage.setWidth(500);                                                                // Default splashscreen width is 500.
-        splashScreenStage.setHeight(300);                                                               // Default splashscreen height is 500.
+        splashScreenStage.setWidth(SPLASHSCREEN_WIDTH);                                                 // Default splashscreen width.
+        splashScreenStage.setHeight(SPLASHSCREEN_HEIGHT);                                               // Default splashscreen height.
         splashScreenStage.initStyle(StageStyle.UNDECORATED);                                            // Hide GUI frame of Operating System.
         splashScreenStage.centerOnScreen();                                                             // Center splashscreen on screen.
         splashScreenStage.show();                                                                       // Show splashscreen.

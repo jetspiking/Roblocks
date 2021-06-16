@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import miscellaneous.constants.Application;
 import userinterface.interfaces.IFragment;
 import userinterface.interfaces.IInteractable;
 import userinterface.interfaces.ISelectable;
@@ -44,7 +45,7 @@ public class ToolboxFragment implements IFragment, ISelectable, IInteractable {
 
         Label text = new Label();
         text.setText(uiToolboxItem.getName());
-        text.setTextFill(Color.BLACK);
+        text.setFont(Application.Containers.TopBar.MENU_BUTTON_FONT);
 
         uiIcon.fitWidthProperty().bind(uiBorderPane.widthProperty().divide(2));
         uiIcon.fitHeightProperty().bind(uiBorderPane.widthProperty().divide(2));
@@ -77,7 +78,7 @@ public class ToolboxFragment implements IFragment, ISelectable, IInteractable {
     public void select() {
        uiBorderPane.setOpacity(1.);
        uiBorderPane.setBackground(new Background(new BackgroundFill(color, new CornerRadii(4), new Insets(1,1,1,1))));
-       uiBorderPane.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, new CornerRadii(4), new BorderWidths(3,3,3,3))));
+       uiBorderPane.setBorder(new Border(new BorderStroke(Application.State.isDarkTheme?Color.WHITE:Color.BLACK, BorderStrokeStyle.SOLID, new CornerRadii(4), new BorderWidths(3,3,3,3))));
     }
 
     /**
@@ -108,7 +109,7 @@ public class ToolboxFragment implements IFragment, ISelectable, IInteractable {
     @Override
     public void hover() {
         uiBorderPane.setOpacity(.7);
-        uiBorderPane.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, new CornerRadii(4), new BorderWidths(1.,1.,1.,1.))));
+        uiBorderPane.setBorder(new Border(new BorderStroke(Application.State.isDarkTheme?Color.WHITE:Color.BLACK, BorderStrokeStyle.SOLID, new CornerRadii(4), new BorderWidths(1.,1.,1.,1.))));
     }
 
     /**

@@ -5,13 +5,15 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.layout.Region;
 import miscellaneous.utilities.Utils;
 import userinterface.interfaces.IFragment;
+import userinterface.interfaces.IThemeSwitcher;
+
 import java.util.ArrayList;
 
 /**
  * Builds the startup (main) window of the application.
  */
 
-public class StartWindowContent implements IFragment {
+public class StartWindowContent implements IFragment, IThemeSwitcher {
     public final SplitPane uiContentPane = new SplitPane();
 
     public final StartWindowOutput output = new StartWindowOutput();
@@ -22,7 +24,7 @@ public class StartWindowContent implements IFragment {
     private double toolboxDividerPosition = .8;
 
     /**
-     * Construct fragment.
+     * Construct fragment.d
      */
 
     public StartWindowContent()
@@ -92,5 +94,21 @@ public class StartWindowContent implements IFragment {
     @Override
     public Node getFragment() {
         return uiContentPane;
+    }
+
+    /**
+     * Switch fragment to dark mode appearance.
+     */
+
+    @Override
+    public void toDarkMode() {
+    }
+
+    /**
+     * Switch fragment to light mode appearance.
+     */
+
+    @Override
+    public void toLightMode() {
     }
 }

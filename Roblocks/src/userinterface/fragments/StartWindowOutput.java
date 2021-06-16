@@ -5,12 +5,13 @@ import javafx.scene.control.TextArea;
 import userinterface.interfaces.IFragment;
 import userinterface.interfaces.ISelectable;
 import userinterface.enums.SelectionType;
+import userinterface.interfaces.IThemeSwitcher;
 
 /**
  * Create the JSON-output (code) window.
  */
 
-public class StartWindowOutput implements IFragment, ISelectable {
+public class StartWindowOutput implements IFragment, ISelectable, IThemeSwitcher {
     public final TextArea uiOutput = new TextArea();
 
     /**
@@ -20,7 +21,6 @@ public class StartWindowOutput implements IFragment, ISelectable {
     public StartWindowOutput()
     {
         uiOutput.setWrapText(true);
-        uiOutput.setStyle("-fx-test-inner-color: black;");
     }
 
     /**
@@ -57,5 +57,23 @@ public class StartWindowOutput implements IFragment, ISelectable {
     @Override
     public SelectionType getType() {
         return SelectionType.OUTPUT;
+    }
+
+    /**
+     * Switch fragment to dark mode appearance.
+     */
+
+    @Override
+    public void toDarkMode() {
+        uiOutput.setStyle("-fx-text-inner-color: white;");
+    }
+
+    /**
+     * Switch fragment to light mode appearance.
+     */
+
+    @Override
+    public void toLightMode() {
+        uiOutput.setStyle("-fx-text-inner-color: black;");
     }
 }
