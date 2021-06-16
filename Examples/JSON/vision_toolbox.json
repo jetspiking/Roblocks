@@ -1,0 +1,28 @@
+{
+	"components":
+	[
+		{
+			"name": "Movement",
+			"image": "move.png",
+			"attributes": ["movement_type","time"],
+			"description": "Move your robot",
+			"tags": ["Movement", "Moving", "Position", "Motion", "Action", "Gesture", "Manoeuvre"]
+		},
+
+		{
+			"name":"AI",
+			"image":"cpu.png",
+			"attributes":["Activate"],
+			"description":"AI",
+			"tags":["AI", "ML", "Smart"]
+		},
+
+		{
+			"name":"Dance",
+			"image":"headphones.png",
+			"attributes":["Song"],
+			"description":"Let your robot dance",
+			"tags":["Fun", "Dance"]
+		}
+	]
+}
