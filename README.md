@@ -70,4 +70,4 @@ The repository can be viewed [here](https://github.com/jaschahuisman/roblocks-we
 # Contributors
 Huge thanks to Jascha Huisman ([@jaschahuisman] for creating awesome banners and actively sharing a lot of feedback and ideas for Roblocks, which definitely improves and has improved the application.  
 
-<img src="https://raw.githubusercontent.com/jetspiking/Roblocks/main/Images/HappyDesigning.png" width="700">
+<img src="https://raw.githubusercontent.com/jetspiking/Roblocks/main/Images/HappyDesigning.png" width="1000">
