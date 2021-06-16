@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/jetspiking/Roblocks/main/Images/SplashscreenNew.png" width="700">
+<img src="https://raw.githubusercontent.com/jetspiking/Roblocks/main/Images/SplashscreenNew.png" width="1000">
 
 _Accessible GUI-driven robot programming for your product_
 
@@ -70,4 +70,6 @@ The repository can be viewed [here](https://github.com/jaschahuisman/roblocks-we
 # Contributors
 Huge thanks to Jascha Huisman ([@jaschahuisman] for creating awesome banners and actively sharing a lot of feedback and ideas for Roblocks, which definitely improves and has improved the application.  
 
+# Happy Designing
+View the guidelines [here](https://www.figma.com/file/TcK8W4pQsesyPY4DCCcDYV/Roblocks-design-team-library)
 <img src="https://raw.githubusercontent.com/jetspiking/Roblocks/main/Images/HappyDesigning.png" width="1000">
