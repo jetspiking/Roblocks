@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/jetspiking/Roblocks/main/Images/Splashscreen.png" width="450">
+<img src="https://raw.githubusercontent.com/jetspiking/Roblocks/main/Images/Splashscreen_new.png" width="450">
 
 _Accessible GUI-driven robot programming for your product_
 
@@ -68,4 +68,5 @@ Currently Roblocks-Web is being developed by Jascha Huisman ([@jaschahuisman](ht
 The repository can be viewed [here](https://github.com/jaschahuisman/roblocks-web).
 
 # Contributors
+
 
