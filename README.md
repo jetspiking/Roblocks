@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/jetspiking/Roblocks/main/Images/Splashscreen_new.png" width="700">
+<img src="https://raw.githubusercontent.com/jetspiking/Roblocks/main/Images/SplashscreenNew.png" width="700">
 
 _Accessible GUI-driven robot programming for your product_
 
