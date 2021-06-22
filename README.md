@@ -11,7 +11,7 @@ Roblocks aims to be an accessible Graphical Programming Tool which enables basic
 Navigate to the releases tab, i.e. 
 [Releases](https://github.com/jetspiking/Roblocks/releases)
 
-From here you can download Roblocks for ```Mac OS```, ```Windows``` and ```Linux```. 
+From here you can download Roblocks for ```Mac OS```, ```Windows```, ```Linux``` and ```Android```. 
 Launch the executable to startup Roblocks, it should work out of the box. 
 
 _The application has been verified to run on Apple Silicon (```M1```)._
