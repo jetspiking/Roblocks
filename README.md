@@ -17,6 +17,7 @@ Launch the executable to startup Roblocks, it should work out of the box.
 _The application has been verified to run on Apple Silicon (```M1```)._
 
 If you are using ```Mac OS``` you might get a message that you can not open the application, because you don't have the permissions or it would be corrupt. You can fix this by opening terminal and executing the following command: 
+
 ```xattr -d com.apple.quarantine /path/to/roblocks.app```
 
 
