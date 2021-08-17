@@ -67,11 +67,6 @@ This section is inapplicable if you just want to use the application, and not tw
 
 The application has been built using IntelliJ Community Edition and uses the libraries ```gson-2.8.6``` and ```json-simple-1.1.1```. Make sure to include these as libraries using your prefered methods. 
 
-# Roblocks-Web
-Currently Roblocks-Web is being developed by Jascha Huisman ([@jaschahuisman](https://github.com/jaschahuisman)), this application enables developing a program from the web, instead of being obligated to download a desktop-client. This is also a solution for devices that are not supported by the full-application.  
-
-The repository can be viewed [here](https://github.com/jaschahuisman/roblocks-web).
-
 # Contributors
 Huge thanks to Jascha Huisman ([@jaschahuisman](https://github.com/jaschahuisman)) for creating awesome banners and actively sharing a lot of feedback and ideas for Roblocks, which definitely improves and has improved the application.  
 
