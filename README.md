@@ -1,3 +1,7 @@
+[![Github All Releases](https://img.shields.io/github/downloads/jetspiking/Roblocks/total.svg)]()
+[![License](https://img.shields.io/github/license/jetspiking/Roblocks.svg)]()
+[![Stars](https://img.shields.io/github/stars/jetspiking/Roblocks.svg)]()
+
 <img src="https://raw.githubusercontent.com/jetspiking/Roblocks/main/Images/SplashscreenNew.png" width="1000">
 
 _Accessible GUI-driven robot programming for your product_
