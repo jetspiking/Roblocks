@@ -77,5 +77,9 @@ Huge thanks to Jascha Huisman ([@jaschahuisman](https://github.com/jaschahuisman
 # Happy Designing
 View the guidelines [here](https://www.figma.com/file/TcK8W4pQsesyPY4DCCcDYV/Roblocks-design-team-library)
 
+# Thank you for using Roblocks
+If you enjoy Roblocks and feel like it's an improvement and you want to support me, you could consider buying me a drink by navigating to my Buy Me A Coffee account.
+
+<a href="https://www.buymeacoffee.com/DustinHendriks" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 
 <img src="https://raw.githubusercontent.com/jetspiking/Roblocks/main/Images/HappyDesigning.png" width="1000">
