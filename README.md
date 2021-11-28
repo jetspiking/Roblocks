@@ -18,7 +18,7 @@ By participating in the Balena-IoT challenge I hope to create some interest in t
 Navigate to the releases tab, i.e. 
 [Releases](https://github.com/jetspiking/Roblocks/releases)
 
-From here you can download Roblocks for ```Mac OS```, ```Windows```, ```Linux``` and ```Android```. 
+From here you can download Roblocks for ```Mac OS```, ```Windows```, ```Linux``` and ```~~Android~~```. 
 Launch the executable to startup Roblocks, it should work out of the box. 
 
 _The application has been verified to run on Apple Silicon (```M1```)._
