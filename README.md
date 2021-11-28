@@ -6,6 +6,8 @@
 
 _Accessible GUI-driven programming for your product_
 
+By participating in the Balena-IoT challenge I hope to create some interest in this project. I think Roblocks is suitable for IoT-purposes. Do not hesitate to open an issue on how to implement support for your use-case, I think a lot of cool projects can be supported and made more accessible by using this application.
+
 # Description
 Roblocks aims to be an accessible Graphical Programming Tool which enables programming for everyone. By configuring an outgoing JSON-protocol and recognizing this, you can link the Roblocks-GUI to your robot or product. This enables other people to control your product, while hiding your back-end and complicated code. This makes the product an option for expositions and educational purposes (to let people create programs in a more accessible way). Roblocks is especially suitable for IoT-projects and robotics, since custom JSON-messages can be used to execute your desired action(s).  
 
@@ -65,6 +67,9 @@ A more detailed log can be viewed by navigating to "View" and click on "Expand l
 
 # Configuration (Roblocks Protocol)
 [Documentation](https://htmlpreview.github.io/?https://github.com/jetspiking/Roblocks/blob/main/Documentation/Protocol/RoblocksHelp.html)
+
+# Help
+Need help and don't know where to start? Feel free to open an issue. Describe your project, use-case(s) and issues so we can attempt to support and help you out as good as possible.  
 
 # Building
 This section is inapplicable if you just want to use the application, and not tweak the Source code.  
