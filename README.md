@@ -75,10 +75,7 @@ This section is inapplicable if you just want to use the application, and not tw
 The application has been built using IntelliJ Community Edition and uses the libraries ```gson-2.8.6``` and ```json-simple-1.1.1```. Make sure to include these as libraries using your prefered methods. 
 
 # Contributors
-Huge thanks to Jascha Huisman ([@jaschahuisman](https://github.com/jaschahuisman)) for creating awesome banners and actively sharing a lot of feedback and ideas for Roblocks, which definitely improves and has improved the application.  
-
-# Happy Designing
-View the guidelines [here](https://www.figma.com/file/TcK8W4pQsesyPY4DCCcDYV/Roblocks-design-team-library)
+Huge thanks to Jascha Huisman ([@jaschahuisman](https://github.com/jaschahuisman)) for creating awesome banners and actively sharing a lot of feedback and ideas for Roblocks.  
 
 # Thank you for using Roblocks
 If you enjoy Roblocks and feel like it's an improvement and you want to support me, you could consider buying me a drink by navigating to my Buy Me A Coffee account.
